@@ -1,0 +1,59 @@
+﻿@page "/trends"
+
+@using System.Net.Http.Json
+
+<PageTitle>Vaccination Trends</PageTitle>
+
+<h1>Trends</h1>
+
+<Chart Config="_config1" @ref="_chart1"></Chart>
+
+@code {
+    private BarChartConfig _config1;
+    private Chart _chart1;
+ 
+    protected override async Task OnInitializedAsync()
+    {
+        _config1 = new BarChartConfig()
+        {
+            Options = new Options()
+            {
+                Plugins = new Plugins()
+                {
+                    Legend = new Legend()
+                    {
+                        Align = LegendAlign.Center,
+                        Display = false,
+                        Position = LegendPosition.Right
+                    }
+                },
+                Scales = new Scales()
+                {
+                    X = new XAxes()
+                    {
+                        Stacked = true,
+                        Ticks = new Ticks()
+                        {
+                            MaxRotation = 0,
+                            MinRotation = 0
+                        }
+                    },
+                    Y = new YAxes()
+                    {
+                        Stacked = true
+                    }
+                }
+            }
+        };
+ 
+        _config1.Data.Labels = BarDataExamples.SimpleBarText;
+        _config1.Data.Datasets.Add(new BarDataset()
+        {
+            Label = "Value",
+            Data = BarDataExamples.SimpleBar.Select(l => l.Value).ToList(),
+            BackgroundColor = Colors.Palette1,
+            BorderColor = Colors.PaletteBorder1,
+            BorderWidth = 1
+        });
+    }
+}
