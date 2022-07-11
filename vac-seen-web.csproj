@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="BlazorDateRangePicker" Version="4.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="PSC.Blazor.Components.Chartjs" Version="6.0.8" />
   </ItemGroup>
 

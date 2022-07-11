@@ -1,8 +1,13 @@
+using System.Text.Json.Serialization;
+
 namespace vac_seen_web;
 
 public class Vaccination
 {
-    public String Date { get; set; }
-    public string CountryCode { get; set; }
-    public int Count { get; set; }
+    [JsonPropertyName("date")]
+    public String? date { get; set; }
+    [JsonPropertyName("countryCode")]
+    public string? countryCode { get; set; }
+    [JsonPropertyName("count")]
+    public int? count { get; set; }
 }
