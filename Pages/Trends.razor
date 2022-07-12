@@ -10,15 +10,19 @@
 <Chart Config="_config1" @ref="_chart1"></Chart>
 
 @code {
+
     private BarChartConfig _config1;
     private Chart _chart1;
 
     protected override async Task OnInitializedAsync()
     {
+
         _config1 = new BarChartConfig()
             {
                 Options = new Options()
                 {
+                    Responsive = true,
+                    MaintainAspectRatio = false,
                     Plugins = new Plugins()
                     {
                         Legend = new Legend()
@@ -47,6 +51,8 @@
                 }
             };
 
+        List<string> labels = new List<string>();
+        List<DataItem> datalist = new List<DataItem>();
 
         HttpClient _httpclient = new HttpClient();
 
@@ -57,11 +63,9 @@
 
         response.EnsureSuccessStatusCode();
 
-        var json = await response.Content.ReadAsStringAsync();
+        string json = response.Content.ReadAsStringAsync().Result;
 
         List<Vaccination> list = JsonConvert.DeserializeObject<List<Vaccination>>(json);
-        List<string> labels = new List<string>();
-        List<DataItem> datalist = new List<DataItem>();
 
         foreach (Vaccination v in list)
         {
@@ -72,6 +76,7 @@
             datalist.Add(di);
         }
 
+        _config1 = new BarChartConfig();
         _config1.Data.Labels = labels;
         _config1.Data.Datasets.Add(new BarDataset()
             {
@@ -81,6 +86,5 @@
                 BorderColor = Colors.PaletteBorder1,
                 BorderWidth = 1
             });
-
     }
 }
