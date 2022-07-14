@@ -58,7 +58,7 @@
 
         string queryDate = "20220711";
         string country = "US";
-        string URI = $"https://vac-seen-getter-rhn-engineering-dschenck-dev.apps.sandbox.x8i5.p1.openshiftapps.com/vaccination/GetVaccinationSummary/?queryDate={queryDate}&countryCode={country}&DaysToGoBack=30";
+        string URI = $"http://vac-seen-getter-rhn-engineering-dschenck-dev.apps.sandbox.x8i5.p1.openshiftapps.com/vaccination/GetVaccinationSummary/?queryDate={queryDate}&countryCode={country}&DaysToGoBack=30";
         var response = await _httpclient.GetAsync(URI);
 
         response.EnsureSuccessStatusCode();
