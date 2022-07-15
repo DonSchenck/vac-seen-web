@@ -7,7 +7,7 @@
 <h1>Create Vaccination Events (into Kafka)</h1>
 
 <p>Summarizes data for a given date and location.</p>
-<p><DateRangePicker SingleDatePicker=true @bind-StartDate="StartDate"/></p>
+<p><DateRangePicker SingleDatePicker=true @bind-StartDate="StartDate" /></p>
 <p>@results</p>
 <button class="btn btn-primary" @onclick="Generate">Generate Data</button>
 
@@ -16,13 +16,16 @@
     string @results = "Results will appear here";
     HttpClient _httpclient = new HttpClient();
 
-    private async Task Generate() {
+    private async Task Generate()
+    {
+        string generation_date = StartDate.ToString();
         var formContent = new FormUrlEncodedContent(new[]{
-            new KeyValuePair<string, string>("dateToRollup", StartDate.ToString())
-        });
-        results = "Rolling up data...";
+            new KeyValuePair<string, string>("generation_date", generation_date)
+    });
+        results = "Generating vaccination events into Kafka...";
         var response = await _httpclient.PostAsync("https://vac-seen-generator-git-rhn-engineering-dschenck-dev.apps.sandbox.x8i5.p1.openshiftapps.com/generator", formContent);
-//        var response = await _httpclient.PostAsync("http://vac-seen-rollup/rollup", formContent);
-        results = String.Format("Vaccinations Generated for {0:d}", StartDate);
+        //        var response = await _httpclient.PostAsync("http://vac-seen-rollup/rollup", formContent);
+        results = String.Format("Vaccinations Generated for {0:d}", StartDate.ToString());
     }
+
 }
