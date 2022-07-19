@@ -5,7 +5,7 @@
 
 <PageTitle>Vaccination Trends</PageTitle>
 
-<h1>Trends</h1>
+<h1>Vaccinations over the past 14 days</h1>
 
 <Chart Config="_config1" @ref="_chart1"></Chart>
 
@@ -40,7 +40,7 @@
                             Ticks = new Ticks()
                             {
                                 MaxRotation = 0,
-                                MinRotation = 0
+                                MinRotation = 0,
                             }
                         },
                         Y = new YAxes()
@@ -58,7 +58,7 @@
 
         string queryDate = "20220711";
         string country = "US";
-        string URI = $"http://vac-seen-getter-rhn-engineering-dschenck-dev.apps.sandbox.x8i5.p1.openshiftapps.com/vaccination/GetVaccinationSummary/?queryDate={queryDate}&countryCode={country}&DaysToGoBack=30";
+        string URI = $"http://vac-seen-getter-rhn-engineering-dschenck-dev.apps.sandbox.x8i5.p1.openshiftapps.com/vaccination/GetVaccinationSummary/?queryDate={queryDate}&countryCode={country}&DaysToGoBack=14";
         var response = await _httpclient.GetAsync(URI);
 
         response.EnsureSuccessStatusCode();
