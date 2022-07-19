@@ -56,7 +56,7 @@
 
         HttpClient _httpclient = new HttpClient();
 
-        string queryDate = "20220711";
+        string queryDate = DateTime.Now.ToString("yyyyMMdd");
         string country = "US";
         string URI = $"http://vac-seen-getter-rhn-engineering-dschenck-dev.apps.sandbox.x8i5.p1.openshiftapps.com/vaccination/GetVaccinationSummary/?queryDate={queryDate}&countryCode={country}&DaysToGoBack=14";
         var response = await _httpclient.GetAsync(URI);
