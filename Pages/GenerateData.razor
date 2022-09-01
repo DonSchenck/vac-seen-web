@@ -23,7 +23,7 @@
             new KeyValuePair<string, string>("generation_date", generation_date)
     });
         results = "Generating vaccination events into Kafka...";
-        var response = await _httpclient.PostAsync("https://vac-seen-generator-git-rhn-engineering-dschenck-dev.apps.sandbox.x8i5.p1.openshiftapps.com/generator", formContent);
+        var response = await _httpclient.PostAsync("http://vac-seen-generator:8080/generator", formContent);
         //        var response = await _httpclient.PostAsync("http://vac-seen-rollup/rollup", formContent);
         results = String.Format("Vaccinations Generated for {0:d}", StartDate.ToString());
     }
