@@ -24,7 +24,6 @@
     });
         results = "Generating vaccination events into Kafka...";
         var response = await _httpclient.PostAsync("http://vac-seen-generator:8080/generator", formContent);
-        //        var response = await _httpclient.PostAsync("http://vac-seen-rollup/rollup", formContent);
         results = String.Format("Vaccinations Generated for {0:d}", StartDate.ToString());
     }
 

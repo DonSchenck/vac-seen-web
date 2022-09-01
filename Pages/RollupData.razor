@@ -21,8 +21,7 @@
             new KeyValuePair<string, string>("dateToRollup", StartDate.ToString())
         });
         results = "Rolling up data...";
-        var response = await _httpclient.PostAsync("http://vac-seen-rollup-rhn-engineering-dschenck-dev.apps.sandbox.x8i5.p1.openshiftapps.com/rollup", formContent);
-//        var response = await _httpclient.PostAsync("http://vac-seen-rollup/rollup", formContent);
+        var response = await _httpclient.PostAsync("http://vac-seen-rollup:8080/rollup", formContent);
         results = String.Format("Vaccinations Summarized for {0:d}", StartDate);
     }
 }
