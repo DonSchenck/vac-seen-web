@@ -58,7 +58,10 @@
 
         string queryDate = DateTime.Now.ToString("yyyyMMdd");
         string country = "US";
+/*
         string URI = $"http://vac-seen-getter-rhn-engineering-dschenck-dev.apps.sandbox.x8i5.p1.openshiftapps.com/vaccination/GetVaccinationSummary/?queryDate={queryDate}&countryCode={country}&DaysToGoBack=30";
+*/
+        string URI = $"http://vac-seen-getter:8080/vaccination/GetVaccinationSummary/?queryDate={queryDate}&countryCode={country}&DaysToGoBack=30";
         var response = await _httpclient.GetAsync(URI);
 
         response.EnsureSuccessStatusCode();
