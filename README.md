@@ -1,6 +1,6 @@
 # vac-seen-web
 ## What is this?
-This repo is Part 1 (of eight) of a workshop/activity/tutorial that comprises the "Vac-Seen System". This system is associated with, and specifically created for, the [Red Hat OpenShift Sandbox](https://developers.redhat.com/developer-sandbox).
+This repo is Part One (of eight) of a workshop/activity/tutorial that comprises the "Vac-Seen System". This system is associated with, and specifically created for, the [Red Hat OpenShift Sandbox](https://developers.redhat.com/developer-sandbox).
 
 At the end of this tutorial you will have an instance of a small website that is running in an OpenShift cluster.
 
